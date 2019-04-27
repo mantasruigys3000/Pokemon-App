@@ -1,0 +1,21 @@
+.pokeLink{
+    position: relative;
+
+}
+
+.pokeText{
+    position: absolute;
+    bottom: 50%;
+    right: 50%
+
+
+
+
+}
+
+
+.pokemonImg:hover{
+    opacity: 0.5;
+
+
+}
