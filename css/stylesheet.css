@@ -1,20 +1,88 @@
+@font-face {
+    font-family: 'pokemon_solidnormal';
+    src: url('pokemon_solid-webfont.woff2') format('woff2'),
+         url('pokemon_solid-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'pokemon_hollownormal';
+    src: url('pokemon_hollow-webfont.woff2') format('woff2'),
+         url('pokemon_hollow-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .pokeLink{
-    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration:none;
+    color: yellow;
+    white-space: nowrap;
+    font-size: 14px;
+
+
+    
+
+
+
+
 
 }
-
+.mainBanner{
+    background-color: black;
+    text-align: center;
+    font-family: "pokemon_hollownormal";
+    color: yellow;
+    font-size: 42px;
+    
+}
 .pokeText{
-    position: absolute;
-    bottom: 50%;
-    right: 50%
+    font-family: "pokemon_solidnormal";
 
+    
 
-
+    
+    text-align:center;
+    display: block;
+    
 
 }
+.pokeContainer{
+    margin: 10px;
 
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+
+
+    width:160;
+    max-width: 160;
+
+    height: 160;
+    max-height: 160;
+
+    background-color: black;
+
+    display: inline-block
+}
+
+.pokemonImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    
+    
+
+}
 
 .pokemonImg:hover{
+    
     opacity: 0.5;
 
 
