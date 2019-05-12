@@ -16,6 +16,8 @@
 
 }
 
+
+
 .pokeLink{
     display: block;
     margin-left: auto;
@@ -34,12 +36,19 @@
 
 }
 .mainBanner{
+
+    border-style: solid;
+    border-width: 5px;
+    border-color: yellow;
+    margin-bottom: 5px;
+    
+
     background-color: black;
     text-align: center;
     font-family: "pokemon_hollownormal";
     color: yellow;
     font-size: 42px;
-    
+
 }
 .pokeText{
     font-family: "pokemon_solidnormal";
@@ -53,11 +62,11 @@
 
 }
 .pokeContainer{
-    margin: 10px;
+    margin: 16px;
 
     border-style: solid;
     border-width: 5px;
-    border-color: black;
+    border-color: yellow;
 
 
     width:160;
@@ -84,6 +93,46 @@
 .pokemonImg:hover{
     
     opacity: 0.5;
+
+
+}
+
+#poke-display{
+    border-style: solid;
+    border-width: 5px;
+    border-color: yellow;
+    background-color: red;
+}
+
+.searchbar{
+    display: inline-block;
+    position: absolute;
+    top: 25px;
+    margin-left: 30px;
+
+
+
+
+
+    
+
+}
+
+input[type="text"],textarea{
+    font-family: "pokemon_solidnormal";
+    color: yellow;
+    font-size: 30px;;
+    border: none;
+    
+
+    
+
+
+
+
+
+    background-color:red;
+    
 
 
 }

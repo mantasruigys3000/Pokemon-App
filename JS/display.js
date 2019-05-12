@@ -1,10 +1,6 @@
 
 //Load names from objects.json. this method is far less expensive than than 807 http requests
 
-
-
-
-
 display = document.getElementById("poke-display")
 
 for(let i = 1 ;i < 808; i++){
@@ -53,13 +49,48 @@ file.onreadystatechange = function(){
         for( i in fileObj.results){
             textObj = document.getElementsByClassName("pokeText")
             textObj[i].innerHTML = fileObj.results[i].name
+
+            containerObj = document.getElementsByClassName("pokeContainer")
+            containerObj[i].id = fileObj.results[i].name
         } 
     }
 }
-function changeText(element,text){
-    element.innerHTML = "changed"
+
+
+function searchFunc(){
+    searchText = document.getElementById("pokeForm").children[0].value
+
+
+    containers = document.getElementsByClassName("pokeContainer")
+
+    searchText.toLowerCase()
+
+    
+    //if (searchText == ""){
+        //return;
+    //}
+    /*
+    for(var id = 0; id < containers.length;id++){
+        name = containers[id].id;
+        name.toLowerCase
+        console.log(name.search(searchText))
+        if (name.search(searchText) != -1){
+            containers[id].style.display = "inline-block"
+        }else{
+            containers[id].style.display = "none"
+        }
+    }
+    */
+
+   form = document.getElementById("pokeForm");
+   console.log(form.children[1])
+   form.children[1].onclick = function(){
+    console.log("ARG")
+    window.location.href = "index.html?search="+searchText
+   }
 }
 
-function loadText(){
+    window.setInterval(searchFunc,2000)
+
+
    
-}
