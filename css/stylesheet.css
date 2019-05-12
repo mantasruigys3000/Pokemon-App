@@ -26,14 +26,6 @@
     color: yellow;
     white-space: nowrap;
     font-size: 14px;
-
-
-    
-
-
-
-
-
 }
 .mainBanner{
 
@@ -52,31 +44,24 @@
 }
 .pokeText{
     font-family: "pokemon_solidnormal";
-
-    
-
-    
     text-align:center;
     display: block;
     
 
 }
+
+
 .pokeContainer{
     margin: 16px;
 
     border-style: solid;
     border-width: 5px;
     border-color: yellow;
-
-
     width:160;
     max-width: 160;
-
     height: 160;
     max-height: 160;
-
     background-color: black;
-
     display: inline-block
 }
 
@@ -84,17 +69,11 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-
-    
-    
-
 }
 
 .pokemonImg:hover{
     
     opacity: 0.5;
-
-
 }
 
 #poke-display{
@@ -109,13 +88,6 @@
     position: absolute;
     top: 25px;
     margin-left: 30px;
-
-
-
-
-
-    
-
 }
 
 input[type="text"],textarea{
@@ -123,16 +95,67 @@ input[type="text"],textarea{
     color: yellow;
     font-size: 30px;;
     border: none;
-    
-
-    
-
-
-
-
-
     background-color:red;
-    
+
+}
+
+
+
+
+
+
+.mainPokeImage{
+    height: 512px;
+    width: 512px;
+
+    object-fit: fill;
+
+
+}
+
+.imageContainter{
+
+    width: 512px;
+    height: 512px;
+    margin: 0 auto;
+
+
+    border: solid 8px black;
+
+}
+
+#pokeDescription{
+    font-family: "pokemon_solidnormal";
+    padding: 10px;
+    border: solid 4px yellow;
+    background-color: black;
+    margin: 10 auto;
+    width: 512px;
+    text-align: center;
+
+    font-size: 30px;
+
+
+
+    color: yellow;
+
+}
+
+
+#pokeName{
+    font-family: "pokemon_solidnormal";
+    padding: 10px;
+    border: solid 4px yellow;
+    background-color: black;
+    margin: 10 auto;
+    width: 300px;
+    text-align: center;
+
+    font-size: 30px;
+
+
+
+    color: yellow;
 
 
 }
