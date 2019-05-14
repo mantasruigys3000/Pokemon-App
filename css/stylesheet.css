@@ -52,7 +52,7 @@
 
 
 .pokeContainer{
-    margin: 16px;
+    margin: 16;
 
     border-style: solid;
     border-width: 5px;
@@ -61,7 +61,7 @@
     max-width: 160;
     height: 160;
     max-height: 160;
-    background-color: black;
+    background-color: #380a0a;
     display: inline-block
 }
 
@@ -80,7 +80,7 @@
     border-style: solid;
     border-width: 5px;
     border-color: yellow;
-    background-color: red;
+    background-color: black;
 }
 
 .searchbar{
@@ -114,7 +114,7 @@ input[type="text"],textarea{
 }
 
 .imageContainter{
-
+    background-color: grey;
     width: 512px;
     height: 512px;
     margin: 0 auto;
@@ -126,6 +126,7 @@ input[type="text"],textarea{
 
 #pokeDescription{
     font-family: "pokemon_solidnormal";
+    font-weight: 100;
     padding: 10px;
     border: solid 4px yellow;
     background-color: black;
@@ -144,6 +145,7 @@ input[type="text"],textarea{
 
 #pokeName{
     font-family: "pokemon_solidnormal";
+    font-weight: 100;
     padding: 10px;
     border: solid 4px yellow;
     background-color: black;
@@ -157,5 +159,53 @@ input[type="text"],textarea{
 
     color: yellow;
 
+
+}
+
+#stats-table{
+    width: 512px;
+    margin: 10 auto;
+    text-align: center;
+
+
+}
+
+table{
+    font-weight: 100;
+    text-align: center;
+    font-family: "pokemon_solidnormal";
+    border: solid 4px yellow;
+    width: 512px;
+    table-layout: auto;
+    padding: 10px;
+
+    background-color: black;
+    color: yellow;
+}
+
+table th {
+    font-weight: 100;
+    border: solid 4px yellow;
+
+}
+
+#pokeHeader{
+    font-size: 25px;
+    
+
+
+}
+
+#statsRow{
+    font-size: 25px;
+    font-weight: 100;
+
+}
+
+#statText{
+    font-weight: 100;
+    background-color: black;
+    color: yellow;
+    font-size: 30px;
 
 }
