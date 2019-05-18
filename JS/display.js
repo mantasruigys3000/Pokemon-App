@@ -1,7 +1,31 @@
 
 //Load names from objects.json. this method is far less expensive than than 807 http requests
 
+var ref = window.location.href
+var url = new URL(ref)
+const searchText = url.searchParams.get("search")
+
 display = document.getElementById("poke-display")
+
+searchButton = document.getElementById("pokeForm").children[1];
+searchField = document.getElementById("pokeForm").children[0];
+
+
+
+document.getElementById("pokeForm").onsubmit = function(){
+    window.location.href= "./index.html?search=" + document.getElementById("pokeForm").children[0].value;
+    return false;
+}
+
+searchButton.onclick = function(){
+    window.location.href= "./index.html?search=" + document.getElementById("pokeForm").children[0].value;
+}
+
+document.getElementById("pokeForm").children[0].value = searchText ;
+
+
+
+
 
 for(let i = 1 ;i < 808; i++){
     var pokemonImg = document.createElement("img")
@@ -43,6 +67,8 @@ fileObj = {}
 
 file.onreadystatechange = function(){
 
+    
+
     if (file.readyState ===4 && file.status ===200){
     fileObj = JSON.parse(file.responseText);
     
@@ -52,45 +78,18 @@ file.onreadystatechange = function(){
 
             containerObj = document.getElementsByClassName("pokeContainer")
             containerObj[i].id = fileObj.results[i].name
+            if(searchText != null){
+                
+                if (containerObj[i].id.search(searchText.toLowerCase()) == -1){
+                    containerObj[i].style.display = "none";
+                }
+
+            }
+            
         } 
     }
 }
 
-
-function searchFunc(){
-    searchText = document.getElementById("pokeForm").children[0].value
-
-
-    containers = document.getElementsByClassName("pokeContainer")
-
-    searchText.toLowerCase()
-
-    
-    //if (searchText == ""){
-        //return;
-    //}
-    /*
-    for(var id = 0; id < containers.length;id++){
-        name = containers[id].id;
-        name.toLowerCase
-        console.log(name.search(searchText))
-        if (name.search(searchText) != -1){
-            containers[id].style.display = "inline-block"
-        }else{
-            containers[id].style.display = "none"
-        }
-    }
-    */
-
-   form = document.getElementById("pokeForm");
-   console.log(form.children[1])
-   form.children[1].onclick = function(){
-    console.log("ARG")
-    window.location.href = "index.html?search="+searchText
-   }
-}
-
-    window.setInterval(searchFunc,2000)
 
 
    
