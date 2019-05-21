@@ -4,7 +4,8 @@
 var ref = window.location.href
 var url = new URL(ref)
 const searchText = url.searchParams.get("search")
-
+const favOnly = url.searchParams.get("favorite")
+console.log(favOnly)
 console.log("local storage is" + localStorage.userFav)
 
 favList = []
@@ -23,11 +24,12 @@ display = document.getElementById("poke-display")
 
 searchButton = document.getElementById("pokeForm").children[1];
 searchField = document.getElementById("pokeForm").children[0];
+favSearch = document.getElementById("pokeForm").children[2];
 
 
 
 document.getElementById("pokeForm").onsubmit = function(){
-    window.location.href= "./index.html?search=" + document.getElementById("pokeForm").children[0].value;
+    window.location.href= "./index.html?favorite=false&search=" + document.getElementById("pokeForm").children[0].value;
     return false;
 }
 
@@ -37,6 +39,9 @@ searchButton.onclick = function(){
 
 document.getElementById("pokeForm").children[0].value = searchText ;
 
+favSearch.onclick = function(){
+    window.location.href= "./index.html?favorite=true&search="
+}
 
 
 
@@ -109,6 +114,11 @@ file.onreadystatechange = function(){
                     containerObj[i].style.display = "none";
                 }
 
+            }
+            if (favOnly == "true"){
+                if (!checkFavList(containerObj[i].children[1].id)){
+                    containerObj[i].style.display = "none";
+                }
             }
             
         } 
