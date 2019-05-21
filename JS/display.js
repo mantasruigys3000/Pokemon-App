@@ -5,6 +5,20 @@ var ref = window.location.href
 var url = new URL(ref)
 const searchText = url.searchParams.get("search")
 
+console.log("local storage is" + localStorage.userFav)
+
+favList = []
+lst = localStorage.userFav.split(',')
+if (lst.length > 0){
+    for(num of lst){
+        favList.push(Number(num))
+    }
+}
+
+
+
+
+
 display = document.getElementById("poke-display")
 
 searchButton = document.getElementById("pokeForm").children[1];
@@ -53,6 +67,17 @@ for(let i = 1 ;i < 808; i++){
     container.appendChild(link)
     //container.appendChild(pokemonImg)
    
+    favButton = document.createElement("input")
+    favButton.type = "image"
+    favButton.src =  (checkFavList(i)) ? "./img/star-yellow.png" : "./img/star-white.png";
+    favButton.id = i;
+    favButton.addEventListener("click",function(){
+        favToggle(this)
+    })
+    favButton.classList.add("favButton")
+
+    container.appendChild(favButton);
+
    
    
     display.appendChild(container);
@@ -90,6 +115,38 @@ file.onreadystatechange = function(){
     }
 }
 
+function favToggle(element){
 
+    if(checkFavList(element.id)){
+
+        for(var i = 0; i < favList.length;i++){
+            if(favList[i] == element.id){
+                favList.splice(i,1);
+
+            }
+        }
+
+        element.src = "./img/star-white.png";
+
+    }else{
+        favList.push(element.id)
+        element.src = "./img/star-yellow.png";
+    }
+
+    localStorage.userFav = favList.toString();
+    console.log(localStorage.userFav)
+
+    
+    
+}
+
+function checkFavList(num){
+    for (id of favList){
+        if (id == num){
+            return true;
+        }
+    }
+    return false;
+}
 
    

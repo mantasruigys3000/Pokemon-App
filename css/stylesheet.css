@@ -64,7 +64,20 @@
     background-color: #380a0a;
     display: inline-block;
 }
+.favButton{
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    opacity: 0.5;
 
+
+
+}
+
+.favButton:hover{
+    opacity: 1;
+
+}
 .pokemonImg{
     display: block;
     margin-left: auto;
