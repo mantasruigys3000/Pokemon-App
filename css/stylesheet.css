@@ -141,7 +141,9 @@ input[type="text"],textarea{
 
 }
 .compareBanner{
-    
+    z-index: 10;
+    top: 0;
+    position: sticky;
     background-color: black;
     text-align: center;
     border: solid 4px yellow;
@@ -286,5 +288,40 @@ table th {
     background-color: black;
     color: yellow;
     font-size: 30px;
+
+}
+
+/* COMPARE PAGE*/
+
+#compareContainer1{
+    margin-left: 1000px;
+    
+}
+#compareContainer2{
+    margin-left: 500px;
+   
+}
+#vsLogoCompare{
+    margin-left: 750px;
+}
+
+#nameContainerCompare{
+    display: block;
+    width: 128px;
+    margin-left: 64px;
+    
+
+    font-family: "pokemon_solidnormal";
+    font-weight: 100;
+    padding: 2px;
+    border: solid 4px yellow;
+    background-color: black;
+    text-align: center;
+
+    font-size: 20px;
+
+
+
+    color: yellow;
 
 }

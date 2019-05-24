@@ -24,6 +24,12 @@ if(localStorage.getItem("userFav") != null){
 
 // Compare Banner
 
+if(window.sessionStorage.comp1 == null){
+    window.sessionStorage.comp1 == "null";
+}  
+if(window.sessionStorage.comp2 == null){
+    window.sessionStorage.comp2 == "null";
+}   
 
 
 updateCompBanner();
@@ -242,4 +248,7 @@ function clearComp(){
 
 }
 
-   
+function goCompare(){
+    if(window.sessionStorage.comp1 != "null" && window.sessionStorage.comp2 != "null")
+        window.location.href = "./compare.html?id1=" + window.sessionStorage.comp1 + "&id2=" + window.sessionStorage.comp2; 
+}
