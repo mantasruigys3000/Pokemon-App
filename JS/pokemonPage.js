@@ -23,7 +23,7 @@ createMainInfo(pokeId,function(data){
 });
 
 
-function createMainInfo(pokemonId,callback){
+function createMainInfo(pokemonId,callback){ // gets relevant info of a pokemon by its id and returns it in the callback
 
     mainLink = "https://pokeapi.co/api/v2/pokemon/" + pokemonId;
     pokemonInfo = {}  // object used for getting all relevant information for a pokemon
@@ -34,24 +34,24 @@ function createMainInfo(pokemonId,callback){
     api.onreadystatechange = function(){
         if (api.readyState ===4 && api.status ===200){
             obj = JSON.parse(api.response)
-            pokemonInfo.name = obj.name.charAt(0).toUpperCase() + obj.name.slice(1);
+            pokemonInfo.name = obj.name.charAt(0).toUpperCase() + obj.name.slice(1); // capitalize first letter
 
             statsObj = []
 
-            for (stat of obj.stats){
+            for (stat of obj.stats){ // gets pokemon stats
                 statName = stat.stat.name;
                 statBase = stat.base_stat;
 
                 statsObj.push({name:statName,baseStat:statBase})
             }
 
-            typeText = ""
+            typeText = "" // type
             for (type of obj.types){
                 typeText += "/"
                 typeText += type.type.name;
 
             }
-            typeText = typeText.slice(1)
+            typeText = typeText.slice(1) // remove first slash
 
             statsObj.push({name:"type",baseStat:typeText})
 
@@ -62,7 +62,7 @@ function createMainInfo(pokemonId,callback){
 
             pokemonInfo.sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + pokemonId + ".png"
             //methods
-            pokemonInfo.getBaseStatByName = function(statName){
+            pokemonInfo.getBaseStatByName = function(statName){ // returns stat value by name of stat
                 
                 for (i = 0; i < this.stats.length;i++){
                     if (this.stats[i].name == statName){
@@ -88,7 +88,7 @@ function createMainInfo(pokemonId,callback){
 }
 
 
-function getCharacteristics(pokemonInfo,callback){
+function getCharacteristics(pokemonInfo,callback){ // call by get info to get description
     api = new XMLHttpRequest();
     api.open('GET',charLink,true);
     api.send();
@@ -111,7 +111,7 @@ function getCharacteristics(pokemonInfo,callback){
     }
 }
 
-function addInfo(pokemonInfo){
+function addInfo(pokemonInfo){ // adds gathered information into html page
 
 
 

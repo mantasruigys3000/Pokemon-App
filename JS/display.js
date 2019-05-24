@@ -1,15 +1,15 @@
 
-//Load names from objects.json. this method is far less expensive than than 807 http requests
 
+//Get Url Parameters
 var ref = window.location.href
 var url = new URL(ref)
 const searchText = url.searchParams.get("search")
-const favOnly = url.searchParams.get("favorite")
-console.log(favOnly)
-console.log("local storage is" + localStorage.getItem("userFav"))
+const favOnly = url.searchParams.get("favorite") // only show favorites 
 
-favList = []
-if(localStorage.getItem("userFav") != null){
+
+favList = [] // locally stored fav list
+
+if(localStorage.getItem("userFav") != null){ // read from stored favorites and put into variable for easy modification
     lst = localStorage.getItem("userFav").split(',');
     if (lst.length > 0){
         for(num of lst){
@@ -23,15 +23,13 @@ if(localStorage.getItem("userFav") != null){
 
 
 // Compare Banner
-
+// set comp 1 and 2 variables to string types for easy comparison
 if(window.sessionStorage.comp1 == null){
-    window.sessionStorage.comp1 == "null";
+    window.sessionStorage.comp1 == "null"; // used to store the ID of the first pokemon being compared
 }  
 if(window.sessionStorage.comp2 == null){
     window.sessionStorage.comp2 == "null";
 }   
-
-
 updateCompBanner();
 
 
@@ -40,15 +38,13 @@ updateCompBanner();
 
 
 
-
+// Adding functionality to my form (search box)
 
 display = document.getElementById("poke-display")
 
 searchButton = document.getElementById("pokeForm").children[1];
 searchField = document.getElementById("pokeForm").children[0];
 favSearch = document.getElementById("pokeForm").children[2];
-
-
 
 document.getElementById("pokeForm").onsubmit = function(){
     window.location.href= "./index.html?favorite=false&search=" + document.getElementById("pokeForm").children[0].value;
@@ -67,33 +63,33 @@ favSearch.onclick = function(){
 
 
 
-
+// create each container
 for(let i = 1 ;i < 808; i++){
+    //image element
     var pokemonImg = document.createElement("img")
-    pokemonImg.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + i.toString() + ".png";
+    pokemonImg.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + i.toString() + ".png"; // get image for each pokemon
     pokemonImg.id = i;
     pokemonImg.classList.add('pokemonImg')
    
+    //Text element
     pokeText = document.createElement('div')
     pokeText.id = i;
     pokeText.innerHTML = i;
-
     pokeText.classList.add("pokeText")
-    //changeText(pokeText)
-   
+
+    //link element
     link = document.createElement('a');
     link.href = 'pokemon.html?id=' + i;
     link.appendChild(pokemonImg);
     link.appendChild(pokeText)
     link.classList.add("pokeLink")
 
+    //container itself
     container = document.createElement("div")
     container.classList.add("pokeContainer")
     container.id = i
-
-    
-    //container.appendChild(pokemonImg)
     container.appendChild(link)
+    //Buttons
     favButton = document.createElement("input")
     favButton.type = "image"
     favButton.src =  (checkFavList(i)) ? "./img/star-yellow.png" : "./img/star-white.png";
@@ -102,26 +98,22 @@ for(let i = 1 ;i < 808; i++){
         favToggle(this)
     })
     favButton.classList.add("favButton")
-
     container.appendChild(favButton);
 
     compareButton = document.createElement("input")
     compareButton.type = "image"
     compareButton.src = "./img/compare-grey.png"
     compareButton.id = i;
-
     compareButton.classList.add("favButton");
-
     compareButton.addEventListener("click",function(){
         compToggle(this);
     })
-
     container.appendChild(compareButton);
    
     
     display.appendChild(container);
 }
-
+//Getting pokemon names
 link = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=807"
 
 file = new XMLHttpRequest();
@@ -138,18 +130,18 @@ file.onreadystatechange = function(){
     
         for( i in fileObj.results){
             textObj = document.getElementsByClassName("pokeText")
-            textObj[i].innerHTML = fileObj.results[i].name
+            textObj[i].innerHTML = fileObj.results[i].name // set text to pokemon name
 
             containerObj = document.getElementsByClassName("pokeContainer")
-            containerObj[i].id = fileObj.results[i].name
+            containerObj[i].id = fileObj.results[i].name // set container to pokemon name
             if(searchText != null){
                 
                 if (containerObj[i].id.search(searchText.toLowerCase()) == -1){
-                    containerObj[i].style.display = "none";
+                    containerObj[i].style.display = "none"; // if a pokemon is not in the search parameter then hide it
                 }
 
             }
-            if (favOnly == "true"){
+            if (favOnly == "true"){ // weather to only show favorites. this being below the search means you can search for favorites too
                 if (!checkFavList(containerObj[i].children[1].id)){
                     containerObj[i].style.display = "none";
                 }
@@ -159,7 +151,7 @@ file.onreadystatechange = function(){
     }
 }
 
-function favToggle(element){
+function favToggle(element){ // toggle weather a pokemon is a favorite
 
     if(checkFavList(element.id)){
 
@@ -184,7 +176,7 @@ function favToggle(element){
     
 }
 
-function checkFavList(num){
+function checkFavList(num){ // checks if pokemon is a favorite
     for (id of favList){
         if (id == num){
             return true;
@@ -193,7 +185,7 @@ function checkFavList(num){
     return false;
 }
 
-function compToggle(element){
+function compToggle(element){ // toggles a pokemon's position is the comparison banner
 
     if (Number(window.sessionStorage.comp1) == element.id){
         window.sessionStorage.comp1 = "null"
@@ -216,7 +208,7 @@ function compToggle(element){
     updateCompBanner();
 }
 
-function updateCompBanner(){
+function updateCompBanner(){ // updates the sprites in the comparison banner
     comp1 = window.sessionStorage.comp1;
     comp2 = window.sessionStorage.comp2;
 
@@ -241,14 +233,14 @@ function updateCompBanner(){
     
 }
 
-function clearComp(){
+function clearComp(){ // clears comparison banner
     window.sessionStorage.comp1 = "null"
     window.sessionStorage.comp2 = "null"
     updateCompBanner();
 
 }
 
-function goCompare(){
+function goCompare(){ // goes to comparison page
     if(window.sessionStorage.comp1 != "null" && window.sessionStorage.comp2 != "null")
         window.location.href = "./compare.html?id1=" + window.sessionStorage.comp1 + "&id2=" + window.sessionStorage.comp2; 
 }
