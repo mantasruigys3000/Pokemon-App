@@ -6,15 +6,31 @@ var url = new URL(ref)
 const searchText = url.searchParams.get("search")
 const favOnly = url.searchParams.get("favorite")
 console.log(favOnly)
-console.log("local storage is" + localStorage.userFav)
+console.log("local storage is" + localStorage.getItem("userFav"))
 
 favList = []
-lst = localStorage.userFav.split(',')
-if (lst.length > 0){
-    for(num of lst){
-        favList.push(Number(num))
+if(localStorage.getItem("userFav") != null){
+    lst = localStorage.getItem("userFav").split(',');
+    if (lst.length > 0){
+        for(num of lst){
+            favList.push(Number(num))
+        }
     }
+
 }
+
+
+
+
+// Compare Banner
+
+
+
+updateCompBanner();
+
+
+
+
 
 
 
@@ -69,9 +85,9 @@ for(let i = 1 ;i < 808; i++){
     container.classList.add("pokeContainer")
     container.id = i
 
-    container.appendChild(link)
+    
     //container.appendChild(pokemonImg)
-   
+    container.appendChild(link)
     favButton = document.createElement("input")
     favButton.type = "image"
     favButton.src =  (checkFavList(i)) ? "./img/star-yellow.png" : "./img/star-white.png";
@@ -83,8 +99,20 @@ for(let i = 1 ;i < 808; i++){
 
     container.appendChild(favButton);
 
+    compareButton = document.createElement("input")
+    compareButton.type = "image"
+    compareButton.src = "./img/compare-grey.png"
+    compareButton.id = i;
+
+    compareButton.classList.add("favButton");
+
+    compareButton.addEventListener("click",function(){
+        compToggle(this);
+    })
+
+    container.appendChild(compareButton);
    
-   
+    
     display.appendChild(container);
 }
 
@@ -143,7 +171,7 @@ function favToggle(element){
         element.src = "./img/star-yellow.png";
     }
 
-    localStorage.userFav = favList.toString();
+    localStorage.setItem("userFav",favList.toString())
     console.log(localStorage.userFav)
 
     
@@ -157,6 +185,61 @@ function checkFavList(num){
         }
     }
     return false;
+}
+
+function compToggle(element){
+
+    if (Number(window.sessionStorage.comp1) == element.id){
+        window.sessionStorage.comp1 = "null"
+        updateCompBanner();
+        return;
+    }else if (Number(window.sessionStorage.comp2) == element.id){
+        window.sessionStorage.comp2 = "null"
+        updateCompBanner();
+        return;
+    }
+
+    if (window.sessionStorage.comp1 == "null"){
+        window.sessionStorage.comp1 = element.id;
+    }else if (window.sessionStorage.comp2 == "null"){
+        window.sessionStorage.comp2 = element.id;
+    }
+
+   
+
+    updateCompBanner();
+}
+
+function updateCompBanner(){
+    comp1 = window.sessionStorage.comp1;
+    comp2 = window.sessionStorage.comp2;
+
+    compBanner = document.getElementById("bannerComp");
+
+
+    if (comp1== "null" && comp2 == "null"){
+        compBanner.style.display = "none";
+    }else{
+        compBanner.style.display = "block";
+        if (comp1 != "null"){
+            compBanner.children[1].children[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + Number(comp1) + ".png"
+        }else{
+            compBanner.children[1].children[0].src = "./img/empty.png"
+        }
+        if (comp2 != "null"){
+            compBanner.children[3].children[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + Number(comp2) + ".png"
+        }else{
+            compBanner.children[3].children[0].src = "./img/empty.png"
+        }
+    }
+    
+}
+
+function clearComp(){
+    window.sessionStorage.comp1 = "null"
+    window.sessionStorage.comp2 = "null"
+    updateCompBanner();
+
 }
 
    

@@ -52,23 +52,30 @@
 
 
 .pokeContainer{
+    
     margin: 16;
     vertical-align: top;
     border-style: solid;
     border-width: 3px;
     border-color: yellow;
-    width:170;
+    width:225;
     /*max-width: 160;*/
-    height: 170;
+    height: 225;
    /* max-height: 160;*/
     background-color: #380a0a;
     display: inline-block;
 }
 .favButton{
+    display: inline-block;
+    
     width: 25px;
     height: 25px;
-    margin-left: 10px;
-    opacity: 0.5;
+    opacity: 0.7;
+    margin-top: 10px;
+    margin-left: 100px;
+
+
+
 
 
 
@@ -79,6 +86,13 @@
 
 }
 .pokemonImg{
+
+    
+
+    max-width: 100px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -114,6 +128,7 @@
 
 #searchButton:hover{
     opacity: 0.5;
+    cursor: pointer;
 }
 
 input[type="text"],textarea{
@@ -125,11 +140,48 @@ input[type="text"],textarea{
     background-color:red;
 
 }
+.compareBanner{
+    
+    background-color: black;
+    text-align: center;
+    border: solid 4px yellow;
+    margin: 10 auto;
+}
+
+.compareImg{
+    display: inline-block;
+    background-color: #380a0a;
+
+    height: 256px;
+    width: 256px;
+    border: solid 5px yellow;
+    margin: 10 20;
 
 
 
+}
+.vsLogo{
+    
+}
+
+#bannerButton{
+    display: inline-block;
+    font-family: "pokemon_solidnormal";
+    background-color: black;
+    border: solid 2px yellow;
+    color: yellow;
+    font-size: 20px;
+    width: 128px;
+    height: 64px;
+    vertical-align: 128px;
 
 
+}
+
+#bannerButton:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
 
 .mainPokeImage{
     height: 512px;
