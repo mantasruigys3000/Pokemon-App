@@ -32,5 +32,23 @@ function addCompareInfo(poke1,poke2){
     nameTag1.innerHTML = poke1.name;
     nameTag2.innerHTML = poke2.name;
 
+    tbls = document.getElementsByClassName("compareTableClass");
+
+    fillCompareTable(tbls[0],poke1);
+    fillCompareTable(tbls[1],poke2);
+
 
 }
+
+function fillCompareTable(tbl,data){
+    console.log(tbl);
+
+    rows = tbl.getElementsByTagName("tr")[1].children;
+    for(var i = 1; i < rows.length;i++){
+        statName = tbl.getElementsByTagName("tr")[0].children[i].innerText.toLowerCase();
+        baseText = data.getBaseStatByName(statName);
+        rows[i].innerHTML = baseText;
+    }
+}
+
+

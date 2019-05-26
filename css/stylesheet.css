@@ -295,14 +295,14 @@ input[type="text"],textarea{
 
 #compareContainer1{
     display: inline-block;
-    margin-left: 200px;
+    margin-left: 100px;
 
 }
 #compareContainer2{
    display: inline-block;
    margin-left: 100px;
    vertical-align: 64px;
-   
+
 
 }
 #vsLogoCompare{
