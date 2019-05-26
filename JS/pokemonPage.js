@@ -1,27 +1,31 @@
-var ref = window.location.href
-var url = new URL(ref)
-const pokeId = url.searchParams.get("id")
 
-image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + pokeId + ".png"
-imgDiv = document.getElementById("mainPokeImage")
-imgDiv.src = image;
+if(document.title == "Pokemon"){
 
-mainLink = "https://pokeapi.co/api/v2/pokemon/" + pokeId;
-charLink = "https://pokeapi.co/api/v2/pokemon-species/" + pokeId;
+    var ref = window.location.href
+    var url = new URL(ref)
+    const pokeId = url.searchParams.get("id")
 
+    image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + pokeId + ".png"
+    imgDiv = document.getElementById("mainPokeImage")
+    imgDiv.src = image;
 
-
-
-
+    mainLink = "https://pokeapi.co/api/v2/pokemon/" + pokeId;
+    charLink = "https://pokeapi.co/api/v2/pokemon-species/" + pokeId;
 
 
 
-createMainInfo(pokeId,function(data){
-    addInfo(data)
 
-    console.log(data)
-});
 
+
+
+
+    createMainInfo(pokeId,function(data){
+        addInfo(data)
+
+        console.log(data)
+    });
+
+}
 
 function createMainInfo(pokemonId,callback){ // gets relevant info of a pokemon by its id and returns it in the callback
 
@@ -35,6 +39,8 @@ function createMainInfo(pokemonId,callback){ // gets relevant info of a pokemon 
         if (api.readyState ===4 && api.status ===200){
             obj = JSON.parse(api.response)
             pokemonInfo.name = obj.name.charAt(0).toUpperCase() + obj.name.slice(1); // capitalize first letter
+            pokemonInfo.id = obj.id;
+
 
             statsObj = []
 
@@ -90,6 +96,7 @@ function createMainInfo(pokemonId,callback){ // gets relevant info of a pokemon 
 
 function getCharacteristics(pokemonInfo,callback){ // call by get info to get description
     api = new XMLHttpRequest();
+    charLink = "https://pokeapi.co/api/v2/pokemon-species/" + pokemonInfo.id;
     api.open('GET',charLink,true);
     api.send();
 
@@ -137,7 +144,3 @@ function addInfo(pokemonInfo){ // adds gathered information into html page
 
 
 }
-
-
-
-

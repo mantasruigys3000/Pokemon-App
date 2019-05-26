@@ -25,10 +25,10 @@ if(localStorage.getItem("userFav") != null){ // read from stored favorites and p
 // Compare Banner
 // set comp 1 and 2 variables to string types for easy comparison
 if(window.sessionStorage.comp1 == null){
-    window.sessionStorage.comp1 == "null"; // used to store the ID of the first pokemon being compared
+    window.sessionStorage.comp1 = "null"; // used to store the ID of the first pokemon being compared
 }  
 if(window.sessionStorage.comp2 == null){
-    window.sessionStorage.comp2 == "null";
+    window.sessionStorage.comp2 = "null";
 }   
 updateCompBanner();
 

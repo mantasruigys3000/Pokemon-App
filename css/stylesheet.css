@@ -251,7 +251,7 @@ input[type="text"],textarea{
 
 }
 
-table{
+#poke-table{
     font-weight: 100;
     text-align: center;
     font-family: "pokemon_solidnormal";
@@ -264,7 +264,7 @@ table{
     color: yellow;
 }
 
-table th {
+#poke-table th {
     font-weight: 100;
     border: solid 4px yellow;
 
@@ -294,18 +294,24 @@ table th {
 /* COMPARE PAGE*/
 
 #compareContainer1{
-    margin-left: 1000px;
-    
+    display: inline-block;
+    margin-left: 200px;
+
 }
 #compareContainer2{
-    margin-left: 500px;
+   display: inline-block;
+   margin-left: 100px;
+   vertical-align: 64px;
    
+
 }
 #vsLogoCompare{
     margin-left: 750px;
 }
 
 #nameContainerCompare{
+
+
     display: block;
     width: 128px;
     margin-left: 64px;
@@ -324,4 +330,29 @@ table th {
 
     color: yellow;
 
+}
+
+#compareTable{
+    
+
+    margin-left: 100px;
+    vertical-align: 64px;
+
+
+    display: inline-block;
+
+    font-weight: 20;
+
+    font-family: "pokemon_solidnormal";
+    border: solid 4px yellow;
+    background-color: black;
+    color: yellow;
+
+
+
+}
+
+#compareTable th{
+    padding: 12px;
+    border: solid 4px yellow;
 }
