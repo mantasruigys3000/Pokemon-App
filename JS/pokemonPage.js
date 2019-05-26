@@ -83,7 +83,10 @@ function createMainInfo(pokemonId,callback){ // gets relevant info of a pokemon 
 
 
             getCharacteristics(pokemonInfo,function(data){
-                callback(pokemonInfo)
+                getTypeInfo(pokemonInfo,function(typeData){
+                    callback(typeData)
+                })
+                
             })
             
            
@@ -117,7 +120,38 @@ function getCharacteristics(pokemonInfo,callback){ // call by get info to get de
         }
     }
 }
+function getTypeInfo(pokemonInfo,callback){
+    types = pokemonInfo.getBaseStatByName("type").split('/');
+    pokemonInfo.typeStats = [];
 
+     
+    confirms = 0;
+    confirmLen = types.length;
+
+    types.forEach(function(element,i){
+        typeLink = "https://pokeapi.co/api/v2/type/" + element;
+        api[i] = new XMLHttpRequest();
+        api[i].open('GET',typeLink,true);
+        api[i].send();
+        api[i].onreadystatechange = function(){
+            if (api[i].readyState ===4 && api[i].status ===200){
+                obj = JSON.parse(api[i].response)
+                
+                pokemonInfo.typeStats.push({"name":element,"stats":obj})
+                confirms++
+                console.log(confirms);
+                if(confirms == confirmLen){
+                callback(pokemonInfo)
+                }
+                
+    
+            }
+        }
+         
+    })
+    
+
+}
 function addInfo(pokemonInfo){ // adds gathered information into html page
 
 
