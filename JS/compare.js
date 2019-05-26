@@ -59,9 +59,6 @@ function fillCompareTable(tbl,data,compareData){
     currentScore = getTypeComparison(currentTypes,compareTypes);
     compareScore = getTypeComparison(compareTypes,currentTypes);
 
-    console.log(currentScore)
-    console.log(compareScore)
-
     var img = getImageComparison(currentScore,compareScore);
     imgRows[1].children[0].src = img;
 
